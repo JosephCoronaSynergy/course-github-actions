@@ -1,0 +1,16 @@
+name: Contexto
+run-name: ¡Estoy aprendiendo a usar Contextos!
+
+on:
+  push:  # Asegúrate de que la estructura de 'on' esté bien definida
+    branches:
+      - aprendiendo-github-actions  # Solo se ejecuta cuando hay un push en esta rama
+
+jobs:
+  check-aprendiendo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Desplegando
+        run: echo "Desplegando en la rama ${{ github.ref }}"
+
+
