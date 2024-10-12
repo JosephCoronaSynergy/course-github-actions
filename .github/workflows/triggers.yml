@@ -1,0 +1,29 @@
+name: Triggers de ejemplo
+run-name: ¡Estoy aprendiendo a usar diferentes Triggers!
+on:
+    push:
+        branches:
+            - aprendiendo-github-actions
+    pull_request:
+        types: [opened, synchronize, reopened]
+    schedule:
+        - cron: '25 10 * * *'  # Se ejecuta todos los días a las 10:15 UTC
+
+jobs:
+    print-trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout del código
+              run: actions/checkout@v3
+
+            - name: Configurar Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.12'
+            
+            - name: Imprimir el tipo de evento
+              run: echo "Este workflow fue activado por un evento de tipo ${{ github.event_name }}"
+            
+            - name: Ejecutar hola_mundo.py
+              run: python hola_mundo.py
+            
